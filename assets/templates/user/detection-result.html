@@ -1,0 +1,513 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Detection Result</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!--
+			CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+	<style>
+		.border-3 {
+			border-width: 3px !important;
+		}
+		.card {
+			transition: transform 0.2s;
+			border-width: 2px;
+			background-color: #fff;
+			border-style: solid;
+			padding: 20px;
+			border-radius: 10px;
+			height: auto; 
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.card-hover:hover {
+			transform: scale(1.05);
+			box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		}
+		
+		.card-title {
+			padding: 10px;
+		}
+		
+		.cont {
+			padding: 20px;
+			border-radius: 10px;
+			max-width: 1200px; 
+			margin: 0 auto; 
+		}
+
+		
+		.col {
+			flex: 0 0 33.3333%;
+			max-width: 33.3333%;
+			padding-right: 15px;
+			padding-left: 15px;
+		}
+		
+		.card-img-top {
+			width: 100%;
+			height: auto;
+			border-radius: 10px;
+	
+		}
+		
+		  .grid-container {
+			  display: grid;
+			  grid-template-columns: 1fr 1fr;
+			  align-items: center;
+			  justify-content: center;
+			  padding: 20px; 
+			  gap: 20px; 
+		  }
+	  
+		  .graph-cont {
+			  height: 300px;
+			  display: flex;
+			  justify-content: center;
+			  align-items: center;
+		  }
+	  
+		  .details-cont {
+			  text-align: center;
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: center;
+			  align-items: center;
+			  border: 1px solid #ddd; 
+			  background-color: #f9f9f9; 
+		  }
+			.product {
+			  display: flex;
+			  flex-direction: column;
+			  border: 1px solid #ddd;
+			  border-radius: 10px;
+			  overflow: hidden;
+			}
+		  
+			
+	.con {
+		display: grid;
+		grid-template-columns: 1fr 1fr; 
+		gap: 20px; 
+		padding: 20px;
+		box-sizing: border-box;
+	}
+	
+	.con > div {
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 20px;
+		transition: all 0.3s ease;
+	}
+	
+	.con > div:hover {
+		border-color: #007bff;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		border-radius: 12px; 
+	}
+	.details-container {
+		text-align: center;
+		font-family: Arial, sans-serif;
+	}
+	
+	h1 {
+		color: #333;
+		font-size: 2rem;
+		margin-bottom: 1rem;
+	}
+	
+	.detail-group {
+		margin-bottom: 1rem;
+	}
+	
+	.detail-value {
+		color: #2ea1dc;
+		font-size: 1.5rem;
+		margin: 0.5rem 0;
+	}
+	
+	.detail-info {
+		color: #2ea1dc;
+		font-size: 1.2rem;
+		margin: 0.5rem 0;
+	}
+	
+	h2 {
+		font-size: 1.25rem;
+		margin: 0.5rem 0;
+	}
+	
+	h5 {
+		font-size: 1rem;
+		margin: 0.5rem 0;
+	}
+	
+	
+	
+	</style>
+
+
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 9959382287</span>
+						</a>
+						<a class="book-now" href="{% url 'user_logout' %}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'user_dashboard' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+						<li><a href="{% url 'user_profile' %}">User Profile</a></li>
+						<li><a class="active" href="{% url 'Classification' %}">Detection</a></li>
+						<li><a href="{% url 'user_feedback' %}">Feedback</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						Detection Result
+					</h1>
+					<p class="link-nav"><a href="{% url 'user_dashboard' %}">Dashboard </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'Classification' %}">
+							Detection Result</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+
+    <div class="cont">
+		<div class="py-5 flex-column align-items-center" style="text-align:center;">
+			<h6 class="display-3" style="background-color: #2ea1dc; display: inline; padding: 0 5px;">
+				<span style="color: white;">Image Segmentation</span>
+			</h6>
+			<br>
+			<br>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<div class="col">
+					<div class="card card-hover" style="border-color: #82ae46; border-radius: 10px;">
+						<img src="data:image/jpeg;base64,{{ uploaded_image_base64 }}" class="card-img-top" alt="Uploaded Image">
+						<div class="card-body text-center">
+							<h5 class="card-title" style="color: #440e62; font-size: 24px; font-weight: bold; width: auto;">Uploaded Image</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card card-hover" style="border-color: black; border-radius: 10px;">
+						<img src="data:image/jpeg;base64,{{ grayscale_image_base64 }}" alt="Grayscale Image" class="card-img-top">
+						<div class="card-body text-center">
+							<h5 class="card-title" style="color: black; font-size: 24px; font-weight: bold; width: auto;">Grayscale Image</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card card-hover" style="border-color: red; border-radius: 10px;">
+						<img src="data:image/jpeg;base64,{{ segmented_image_base64 }}" class="card-img-top" alt="Segmented Image">
+						<div class="card-body text-center">
+							<h5 class="card-title" style="color: red; font-size: 24px; font-weight: bold; width: auto;">Segmented Image</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+	<div class="container">
+		<div class="row text-center">
+			<!-- First Card -->
+			<div class="col-md-4">
+				<div class="card card-custom" style="border-color: #ff7956;">
+					<div class="card-body">
+						<!-- Circular Image -->
+						<div class="image-container">
+							<img src="{% static 'user/img/model-1.png' %}" alt="Image 1" class="card-image" style="height:170px;">
+						</div>
+						<h3 class="card-title card-title-custom" style="color:#57a4ff;">MODEL NAME: {{ model_name }}</h3>
+						<h3 class="card-title card-title-custom" style="color:#57a4ff;">MODEL ACCURACY: {{ model_accuracy }}</h3>
+					</div>
+				</div>
+			</div>
+			<!-- Second Card -->
+			<div class="col-md-4">
+				<div class="card card-custom" style="border-color: #abb4b7;">
+					<div class="card-body">
+						<!-- Circular Image -->
+						<div class="image-container">
+							<img src="data:image/jpeg;base64,{{ uploaded_image_base64 }}" alt="Image 1" class="card-image" style="height:150px; border-radius:20px;">
+						</div>
+						<br>
+						<h3 class="card-title card-title-custom" style="display: inline-block; background-color: #57a4ff; padding: 0 5px; color: black;">RESULT: {{ predicted_result }}</h3>
+
+						<h5 class="card-title card-title-custom">{{ info }}</h5>
+					</div>
+				</div>
+			</div>
+		
+	
+	<br>
+			<!-- Third Card -->
+			<div class="col-md-4">
+				<div class="card card-custom" style="border-color: #4bc0c0;">
+					<div class="card-body">
+						<h2 style="text-align:center;">Model Accuracy</h2>
+						<canvas id="lineChart" data-accuracy="{{ model_accuracy }}"></canvas>
+					</div>
+				</div>
+			</div>
+	
+	
+	
+		</div>
+	</div>
+
+
+<br>
+<br>
+<br>
+
+
+	<script>
+		var accuracyPercentage = document.getElementById('lineChart').getAttribute('data-accuracy');
+		accuracyPercentage = parseFloat(accuracyPercentage);
+				var data = {
+				  labels: ['0','100'],
+				  datasets: [{
+					  label: "{{ model_name }}", 
+					  data: [0], 
+					  fill: false,
+					  borderColor: "rgb(75, 192, 192)",
+					  lineTension: 0.1
+				  }]
+			  };
+		  			  for (var i = 0; i <= 30; i += 5) {
+				  data.datasets[0].data.push(accuracyPercentage); 
+			  }
+		  
+			  // Configuration options
+			  var options = {
+				  scales: {
+					  xAxes: [{
+						  scaleLabel: {
+							  display: true,
+							  labelString: 'Epochs' 
+						  }
+					  }],
+					  yAxes: [{
+						  scaleLabel: {
+							  display: true,
+							  labelString: 'Accuracy' 
+						  },
+						  ticks: {
+							  beginAtZero: true
+						  }
+					  }]
+				  }
+			  };
+		  
+			  var ctx = document.getElementById('lineChart').getContext('2d');
+		  
+			  var lineChart = new Chart(ctx, {
+				  type: 'line',
+				  data: data,
+				  options: options
+			  });
+		  </script>
+
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							L.B Nagar Metro Station Lbnagar, Hyderabad, 500097.
+						</p>
+						<p class="number">
+							+91 9959382287 <br> +91 9959382287
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+							<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in/" target="_blank">codeleaf</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-dribbble"></i></a>
+					<a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+</body>
+
+</html>

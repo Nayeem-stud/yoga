@@ -1,0 +1,339 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>User Login</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<!--
+	CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+
+	<style>
+		.grid-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr; 
+			gap: 20px;
+		}
+		
+		.image-container, .login-container {
+			width: 100%;
+			height: 445px; 
+			box-sizing: border-box;
+		}
+		
+		.image-container img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover; 
+		}
+		
+		.login-container {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 50px;
+			background-color: #d9dfe7;
+			border-radius: 50px;
+			
+		}
+		
+		.login-container h2 {
+			margin: 0 0 20px;
+			text-align: center;
+		}
+		
+		.form-group {
+			margin-bottom: 15px;
+		}
+		
+		.form-group label {
+			display: block;
+			margin-bottom: 5px;
+			color: black;
+			font-weight: bold;
+		}
+		
+		.form-group input {
+			width: calc(100% - 20px); 
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+		
+		button {
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			background-color: #007bff;
+			color: white;
+			font-size: 16px;
+			cursor: pointer;
+			margin-top: 10px;
+			height:50px;
+		}
+		
+		button:hover {
+			background-color: #0056b3;
+		}
+	
+	</style>
+	
+
+
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 9959382287</span>
+						</a>
+						<a class="book-now" href="{% url 'register' %}">Register</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'index' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li><a href="{% url 'about_us' %}">About Us</a></li>
+						<li><a class="active" href="{% url 'user_login' %}">User Login</a></li>
+						<li><a href="{% url 'admin_login' %}">Admin Login</a></li>
+						<li><a href="{% url 'contact_us' %}">Contact Us</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						 User Login
+					</h1>
+					<p class="link-nav"><a href="{% url 'index' %}">Home </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'user_login' %}">
+							 User Login</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+<br>
+<br>
+<br>
+
+
+
+
+
+
+	<!-- Start About Us Area -->
+	<section class="feature-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5">
+					<img src="{% static 'user/img/yoga-1.png' %}" alt="Feature Image" style="width: 100%; height: auto;">
+				</div>
+				<div class="col-lg-7">
+					<div class="login-container">
+						<h2 style="text-align: center;">User Login</h2>
+						<form  method = 'post' enctype = 'multipart/form-data'>
+                            {% csrf_token %}
+							<div class="form-group" style="width: 100%;">
+								<label for="email">Email:</label>
+								<input type="email" id="email" name="email" class="form-control" style="width: 100%;">
+							</div>
+							<div class="form-group" style="width: 100%;">
+								<label for="password">Password:</label>
+								<input type="password" id="password" name="password" class="form-control" style="width: 100%;">
+							</div>
+							<button type="submit" name="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+						</form>
+						<br>
+						<a href="{% url 'register' %}" class="btn btn-danger" style="display: block; width: 100%; text-align: center; padding: 10px;">Create An Account</a>					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<!-- End About Us Area -->
+
+
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							L.B Nagar Metro Station Lbnagar, Hyderabad, 500097.
+						</p>
+						<p class="number">
+							+91 9959382287 <br> +91 9959382287
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+						<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in/" target="_blank">codeleaf</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-dribbble"></i></a>
+					<a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,335 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>User Profile</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<!--
+	CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 9959382287</span>
+						</a>
+						<a class="book-now" href="{% url 'user_logout' %}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'user_dashboard' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+						<li><a class="active" href="{% url 'user_profile' %}">User Profile</a></li>
+						<li><a href="{% url 'Classification' %}">Detection</a></li>
+						<li><a href="{% url 'user_feedback' %}">Feedback</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						User Profile
+					</h1>
+					<p class="link-nav"><a href="{% url 'user_dashboard' %}">Dashboard </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'user_profile' %}">
+							User Profile</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+
+<!--  form  start-->
+
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation -->
+    <nav class="nav nav-borders">
+      <a class="nav-link active ms-0" href="{% url 'user_profile' %}" target="__blank"></a>
+    </nav>
+  
+    <!-- Heading for User Profile -->
+    <div class="text-center mb-4">
+      <h2>User Profile</h2>
+    </div>
+  
+    <form method="post" enctype='multipart/form-data'>
+      {% csrf_token %}
+      <div class="row justify-content-center">
+        <!-- Profile picture container (4 grid) -->
+        <div class="col-xl-3"  style="text-align:center;">
+          <!-- Profile picture card -->
+          <div class="card mb-4 mb-xl-0 equal-height-card"  style="text-align:center;">
+            <div class="card-header">Profile Picture</div>
+            <div class="card-body text-center"  style="text-align:center;">
+              <!-- Profile picture image -->
+              <img src="/media/{{i.user_image}}" alt="" style="border-radius: 100%; height: 340px; width: auto;">
+              <!-- Profile picture upload button -->
+              <br>
+              <div class="mb-3" style="text-align:center;">
+                <input class="form-control" type="file" id="formFile" name="profilepic" style="display: none; background-color: #ed4752;">
+                <label for="formFile" class="btn btn-primary" style="background-color: #0075d8; border-color: #0075d8; text-align:center;">Choose file</label>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Account details container (8 grid) -->
+        <div class="col-xl-6">
+          <!-- Account details card -->
+          <div class="card mb-4 equal-height-card">
+            <div class="card-header">Account Details</div>
+            <div class="card-body">
+              <div class="mb-3">
+                <label class="small mb-1 custom-label" for="inputUsername">Username</label>
+                <input class="form-control custom-input" id="inputUsername" type="text" name="username" placeholder="Enter your username" value="{{i.user_name}}">
+              </div>
+              <!-- Form Row -->
+              <div class="row gx-3 mb-3">
+                <div class="col-md-6">
+                  <label class="small mb-1 custom-label" for="inputFirstName">Email Address</label>
+                  <input class="form-control custom-input" id="inputFirstName" name="email" type="email" placeholder="Enter your Email Address" value="{{i.user_email}}">
+                </div>
+                <div class="col-md-6">
+                  <label class="small mb-1 custom-label" for="inputLastName">Password</label>
+                  <input class="form-control custom-input" id="inputLastName" name="Password" type="text" placeholder="Enter your Password" value="{{i.user_password}}">
+                </div>
+              </div>
+              <div class="row gx-3 mb-3">
+                <div class="col-md-6">
+                  <label class="small mb-1 custom-label" for="inputOrgName">Age</label>
+                  <input class="form-control custom-input" id="inputOrgName" name="age" type="text" placeholder="Enter your Age" value="{{i.user_age}}">
+                </div>
+                <div class="col-md-6">
+                  <label class="small mb-1 custom-label" for="inputLocation">Address</label>
+                  <input class="form-control custom-input" id="inputLocation" name="address" type="text" placeholder="Enter your Address" value="{{i.user_address}}">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="small mb-1 custom-label" for="inputEmailAddress">Mobile Number</label>
+                <input class="form-control custom-input" id="inputEmailAddress" name="mobile number" type="text" placeholder="Enter your Mobile Number" value="{{i.user_contact}}">
+              </div>
+              <button class="btn btn-primary" role="button" style="background-color: #0075d8; border-color: #0075d8;">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  
+
+  <style>
+    .equal-height-card {
+      height: 100%;
+    }
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  </style>
+<br>  
+<br>  
+<br>  
+  
+<!--  form end -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							L.B Nagar Metro Station Lbnagar, Hyderabad, 500097.
+						</p>
+						<p class="number">
+							+91 9959382287 <br> +91 9959382287
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+							<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in/" target="_blank">codeleaf</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-dribbble"></i></a>
+					<a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+</body>
+
+</html>

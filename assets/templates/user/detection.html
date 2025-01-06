@@ -1,0 +1,390 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'user/img/icon-img.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Detection</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet">
+	<!--
+		CSS
+			============================================= -->
+			<link rel="stylesheet" href="{% static 'user/css/linearicons.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/font-awesome.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/bootstrap.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/magnific-popup.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/nice-select.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/animate.min.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/owl.carousel.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/jquery-ui.css' %}">
+			<link rel="stylesheet" href="{% static 'user/css/main.css' %}">
+
+
+	<style>
+		.border-3 {
+		  border-width: 3px !important;
+		}
+	  
+		.button-container {
+			display: flex;
+			justify-content: center;
+			margin-bottom: 1rem;
+		  }
+		  
+		  .button-container input[type="radio"] {
+			display: none;
+		  }
+		  
+		  .button-container label {
+			display: inline-flex;
+			align-items: center;
+			margin: 0 5px;
+			padding: 10px 20px;
+			border: 2px solid transparent;
+			border-radius: 50px; /* Rounded pill shape */
+			cursor: pointer;
+			transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+			background-color: #2ea1dc;  /* Button Color */
+			font-weight: bold;
+			color: white;
+			text-align: center;
+		  }
+		  
+		  .button-container label:hover {
+			background-color: #1a7bb9;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label {
+			background-color: white;
+			border-color: #2ea1dc;
+			color: #2ea1dc;
+		  }
+		  
+		  .button-container input[type="radio"]:checked + label::before {
+			content: "";
+			display: inline-block;
+			width: 14px;
+			height: 14px;
+			background-color: #2ea1dc;
+			border-radius: 50%;
+			margin-right: 8px;
+		  }
+		  
+	  
+
+		  <!-- END -->
+
+
+		.form-column {
+		  display: flex;
+		  flex-direction: column;
+		  justify-content: center;
+		  align-items: center;
+		  height: 100%;
+		}
+
+	body {
+	  overflow-x: hidden;
+	}
+  </style>
+
+</head>
+
+<body>
+	<!-- start header Area -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+							<li><a href="#"><i class="fa fa-behance"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+						<a href="tel:+880 1234 654 953">
+							<span class="text">+91 9959382287</span>
+						</a>
+						<a class="book-now" href="{% url 'user_logout' %}">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<a href="{% url 'user_dashboard' %}"><h2 style="color: #2ea1dc;">Yoga Posture Detection</h2></a>
+				</div>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+						<li><a href="{% url 'user_profile' %}">User Profile</a></li>
+						<li><a class="active" href="{% url 'Classification' %}">Detection</a></li>
+						<li><a href="{% url 'user_feedback' %}">Feedback</a></li>
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header>
+	<!-- end header Area -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src="{% static 'user/img/cta-img.png' %}" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						Detection
+					</h1>
+					<p class="link-nav"><a href="{% url 'user_dashboard' %}">Dashboard </a>
+						<span class="lnr lnr-arrow-right"></span> <a href="{% url 'Classification' %}">
+							Detection</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+
+
+	
+
+
+ <!-- Start -->
+ <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+	<div class="row g-0 justify-content-center align-items-center">
+		<!-- Image Column -->
+		<div class="col-md-5 d-flex justify-content-center align-items-center">
+		  <div class="video">
+			<img id="preview-image" src="{% static 'user/img/yoga-5.jpeg' %}" class="img-fluid" alt="Image" style="max-width: 500px;">
+			<div id="file-name" class="text-dark mt-2" style="color: black; text-align: center; font-weight:bold;"></div>
+		</div>
+		</div>
+		
+		<!-- Form Column -->
+		<div class="col-md-6 d-flex justify-content-center align-items-center" style="background-color: #d9dfe7; border-radius:50px;">
+			<div class="p-5" style="width: 100%;">
+				<h1 class="mb-4" style="font-weight: bold; color:black; text-align:center;">Choose Any Model</h1>
+				<form method="POST" enctype="multipart/form-data" id="form" onsubmit="return validateForm()">
+					{% csrf_token %}
+					<div class="button-container">
+						<input type="radio" id="radio1" name="model_type" value="Mobilenet">
+						<label for="radio1">MobileNet</label>
+						<input type="radio" id="radio2" name="model_type" value="vgg16">
+						<label for="radio2">Vgg16</label>
+						<input type="radio" id="radio3" name="model_type" value="Densenet">
+						<label for="radio3">DenseNet</label>
+					</div>
+					<div class="mt-3">
+						<h1 class="mb-4" style="font-weight: bold; color:black; text-align:center;">Upload The Image</h1>
+						<input class="form-control form-control-lg custom-input mb-10" id="file" type="file" name="image" accept=".jfif,.jpg,.jpeg,.png,.gif" required onchange="displayFileNameAndPreview()">
+						<div id="file-name" class="text-white mt-2"></div>
+					</div>
+					<div class="col-12 mt-4">
+						<button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+  <!-- End -->
+
+<!-- Start Scripts -->
+
+<!-- Image Preview Dispaly and File Name Display  Script -->
+  <script type="text/javascript">
+	function displayFileNameAndPreview() {
+		const fileInput = document.getElementById('file');
+		const fileNameDiv = document.getElementById('file-name');
+		const previewImage = document.getElementById('preview-image');
+
+		const file = fileInput.files[0];
+		if (file) {
+			const reader = new FileReader();
+			reader.onload = function(e) {
+				previewImage.src = e.target.result;
+				previewImage.style.maxWidth = '500px';
+				previewImage.style.height = 'auto';
+			};
+			reader.readAsDataURL(file);
+
+			fileNameDiv.textContent = `Selected file: ${file.name}`;
+		}
+	}
+</script>
+
+<!-- Validation Script -->
+<script>
+function validateForm() {
+var radios = document.getElementsByName('model_type'); 
+var formValid = false;
+
+for (var i = 0; i < radios.length; i++) {
+  if (radios[i].checked) {
+	formValid = true; 
+	break;
+  }
+}
+
+if (!formValid) {
+  alert("Please select a model before submitting.");
+}
+
+return formValid;
+}
+</script>
+
+
+
+<!-- End Of the Scripts -->
+
+
+<br>
+<br>
+<br>
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Fact</h4>
+						<p>
+							Did you know yoga is over 5,000 years old? Originating in ancient India, it has evolved and adapted across centuries to become the diverse and globally practiced discipline it is today.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Contact Us</h4>
+						<p>
+							L.B Nagar Metro Station Lbnagar, Hyderabad, 500097.
+						</p>
+						<p class="number">
+							+91 9959382287 <br> +91 9959382287
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-5  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h4>Newsletter</h4>
+						<p>You can trust us. we only send offers, not a single spam.</p>
+						<div class="d-flex flex-row" id="mc_embed_signup">
+
+							<form class="navbar-form"
+							 method="get">
+								<div class="input-group add-on align-items-center d-flex">
+									<input class="form-control" name="email" placeholder="Your Email" placeholder = 'Your Email address'
+									 required type="email">
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+									<div class="input-group-btn">
+										<button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									</div>
+								</div>
+								<div class="info mt-20"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom row align-items-center">
+				<p class="footer-text m-0 col-lg-6 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Developed With <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://codeleaf.in/" target="_blank">codeleaf</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				<div class="col-lg-6 col-sm-12 footer-social">
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-dribbble"></i></a>
+					<a href="#"><i class="fa fa-behance"></i></a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- End footer Area -->
+
+
+	<script src="{% static 'user/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'user/js/vendor/bootstrap.min.js' %}"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'user/js/easing.min.js' %}"></script>
+	<script src="{% static 'user/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'user/js/superfish.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.tabs.min.js' %}"></script>
+	<script src="{% static 'user/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'user/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'user/js/mail-script.js' %}"></script>
+	<script src="{% static 'user/js/main.js' %}"></script>
+
+
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                    <script>swal({
+                            title: "Success!",
+                            text: "{{message}}",
+                            icon: "success",
+                            button: "OK",
+                        });
+                    </script>
+                
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+                    <script>swal({
+                            title: "Warning :)",
+                            text: "{{message}}",
+                            icon: "warning",
+                            button: "OK",
+                        
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+                    <script>swal({
+                            title: "info :)",
+                            text: "{{message}}",
+                            icon: "info",
+                            button: "OK",
+                        });
+                    </script>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                    <script>swal({
+                            title: "error :)",
+                            text: "{{message}}",
+                            icon: "error",
+                            button: "OK",
+                        });
+                    </script>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+
+</body>
+
+</html>
