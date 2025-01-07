@@ -141,4 +141,4 @@ The architecture consists of:
 3. Commit and push your changes.
 4. Submit a pull request with a detailed description.
 
-Refer to `CONTRIBUTING.md` for more guidelines.
+Refer to [CONTRIBUTING.md](./CONTRIBUTING.md) for more guidelines.
