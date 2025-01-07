@@ -41,7 +41,6 @@ def user_login(req):
                 if user_data.user_password == user_password:
                     if (
                         user_data.Otp_Status == "verified"
-                        and user_data.User_Status == "accepted"
                     ):
                         req.session["user_id"] = user_data.user_id
                         messages.success(req, "You are logged in.")
@@ -50,7 +49,6 @@ def user_login(req):
                         return redirect("user_dashboard")
                     elif (
                         user_data.Otp_Status == "verified"
-                        and user_data.User_Status == "pending"
                     ):
                         messages.info(req, "Your status is pending.")
                         return redirect("user_login")
@@ -81,8 +79,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 
 def admin_login(req):
-    admin_name = "admi"
-    admin_pwd = "admi"
+    admin_name = "admin"
+    admin_pwd = "admin"
     if req.method == "POST":
         admin_n = req.POST.get("Username")
         admin_p = req.POST.get("password")
