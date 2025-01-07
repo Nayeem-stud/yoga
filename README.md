@@ -72,7 +72,8 @@ The architecture consists of:
 4. **Machine Learning Model:** Predicts yoga poses using trained CNNs.
 5. **Cloud Infrastructure:** Supports deployment and scalability.
 
-![System Architecture Diagram](https://via.placeholder.com/800x400.png?text=System+Architecture+Diagram)
+![System Architecture Diagram](./media/arc.png)
+
 
 ## 6. Model Workflow
 1. **Data Collection:** Collect images of various yoga poses.
