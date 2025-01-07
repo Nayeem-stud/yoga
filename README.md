@@ -39,7 +39,6 @@ The project offers the following features:
 - **Firebase/Auth0** (for authentication and OTP recovery)
 
 ### Frontend
-- **React.js** (UI development)
 - **Bootstrap** (styling)
 - **HTML5, CSS3, JavaScript**
 
