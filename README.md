@@ -61,6 +61,7 @@ The project offers the following features:
 
 ## 4. Dataset
 The dataset includes labeled images of various yoga poses, sourced from publicly available yoga datasets. The data is preprocessed to normalize image size and resolution. A sentiment analysis dataset is also used to evaluate user feedback tones.
+![Database Architecture Diagram](./media/arc.jpg)
 
 ## 5. System Architecture
 The architecture consists of:
