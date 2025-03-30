@@ -28,7 +28,7 @@ The project offers the following features:
 - **Real-Time Pose Prediction:** Predicts at least 4-5 common yoga poses using a webcam.
 - **Pose Search:** Search for a pose and access detailed tutorials.
 - **Feedback Sentiment Analysis:** Analyzes user feedback to determine sentiment (positive, neutral, negative).
-- **Blog Section:** Users can create, edit, and comment on yoga-related posts.
+- **Chat Board:** Users can Ask Quries on related Yoga Poses.
 - **Pose Recommendations:** Suggests yoga poses based on user health benefits.
 - **Admin Dashboard:** Visualizes metrics like user activity and feedback trends.
 
