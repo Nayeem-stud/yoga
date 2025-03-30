@@ -106,7 +106,7 @@ The architecture consists of:
 ### Steps to Run Locally
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/yoga-pose-prediction.git
+   git clone https://github.com/Nayeem-stud/yoga.git
    ```
 2. **Navigate to Directory:**
    ```bash
